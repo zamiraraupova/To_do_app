@@ -6,8 +6,6 @@ let element = document.getElementsByTagName('li')
 
 
 
-
-
 // add a new element to the list 
 
 function newListElement() {
@@ -19,8 +17,10 @@ function newListElement() {
     // console.log(checkbox)
     li.append(' ', checkbox)
 
-    let text = document.createTextNode(inputValue); // defines input text
+    let text = document.createElement("span"); // defines input text within span 
+    text.innerHTML = inputValue;
     li.appendChild(text);
+    
 
     let removeBtn = document.createElement("button"); // creates a remove button
     removeBtn.innerText = 'Remove'
@@ -47,12 +47,10 @@ function newListElement() {
     checkbox.addEventListener("click", () => {
 
         if (checkbox.checked) {
-            li.style.textDecoration = "line-through";
-            number.innerText = +number.innerText + 1;
+            text.style.textDecoration = "line-through";
 
         } else {
-            li.style.textDecoration = "none";
-            number.innerText = +number.innerText - 1;
+            text.style.textDecoration = "none";
         }
     });
 }
